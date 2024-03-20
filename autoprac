@@ -36,6 +36,7 @@ weapon_accuracy_nospread 1
 // binds for practice mode
 bind MOUSE3 "noclip"
 bind n sv_rethrow_last_grenade
+bind v ent_fire smokegrenade_projectile kill; stopsound
 
 bind MOUSE5 "cycle"
 alias "cycle" "s1"
