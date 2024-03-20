@@ -6,61 +6,42 @@ echo “”
 echo “”
 echo “”
 
-//useful commands:
-// key_listboundkeys
+//useful commands (to show bindings: key_listboundkeys):
+bind "0" "toggleconsole"
+unbind "F4"
+unbind "F5"
+unbind "F10"
 
 // mouse sensitivity 800dpi
-// in game sens dropped from 1.15 to 1.10 on Dec5,2023
-// niko:    800*0.69 = 552
+// in game sens dropped from 1.15 to 1.05 on Dec5,2023
+// in game sens dropped from 1.05 to 1.00 on Jan15,2024
+// in game sens dropped from 1.0 to .90 on Feb9,2024
+// in game sens dropped from 0.9 to .85 on Mar3,2024
+// in game sens dropped from 0.8 to .8 on Mar12,2024
+// niko:    400*1.45 = 580
 // monesy:  400*2 = 800
 // simple:  400*3.09 = 1236
 // twistzz: 400*1.59 = 636
 // ropz:    400*1.77 = 708
 // zywoo:   400*2 = 800
 // flom:    800*1.5 = 1200
-sensitivity 1.10
+sensitivity 0.80
 
-cl_showfps 1
+// default movement bind
+bind "w" "+forward" 
+bind "s" "+back" 
+bind "a" "+left" 
+bind "d" "+right"
+bind "shift" "+sprint" 
+bind "ctrl" "+duck"
 
-// fixing choke:
-// cl_updaterate 128 
-// rate 786432
-// cl_interp 0.015625
-// cl_interp 0.03125 (for less stable internet)
-// cl_interp_ratio 1
-// cl_lagcompensation 1
-
-// default movement bind (pre Oct7)
-// bind "w" "+forward"
-// bind "s" "+back" 
-// bind "a" "+left" 
-// bind "d" "+right" 
-// bind "shift" "+sprint" 
-// bind "ctrl" "+duck" 
-
-// default movement bind (add clear)
-bind "w" "+forward; clear" 
-bind "s" "+back; clear" 
-bind "a" "+left; clear" 
-bind "d" "+right; clear"
-bind "shift" "+sprint; clear" 
-bind "ctrl" "+duck; clear"
-
-// Personal Binds (pre Oct7)
-// alias +cjump "+jump; +duck"
-// alias -cjump "-jump; -duck"
-// bind "space" "+cjump"
-// bind mwheelup +jump
-// bind mwheeldown +jump
-// bind space +jump
-
-// Personal Binds (added clear)
-alias +cjump "+jump; clear; +duck; clear"
-alias -cjump "-jump; clear; -duck; clear"
-bind "space" "+cjump; clear"
-bind mwheelup "+jump; clear"
-bind mwheeldown "+jump; clear"
-bind space "+jump; clear"
+// Personal Binds
+alias +cjump "+jump; +duck"
+alias -cjump "-jump; -duck"
+bind "space" "+cjump"
+bind mwheelup +jump
+bind mwheeldown +jump
+bind space +jump
 
 //jumpthrow
 alias "+jumpaction" "+jump;"
@@ -68,6 +49,7 @@ alias "+throwaction" "-attack; -attack2"
 alias "-jumpaction" "-jump"
 bind alt "+jumpaction;+throwaction;"
 
+//one step throw
 alias "+runthrow" "+forward;+jump;"
 alias "-runthrow" "-jump;-forward"
 bind m "+runthrow;+throwaction"
@@ -80,6 +62,7 @@ bind MOUSE2 +attack2
 bind MOUSE3 clutch_mode_toggle
 bind MOUSE4 +voicerecord
 bind MOUSE5 player_ping
+bind "TAB" "+showscores"
 
 
 alias main "slot1; cl_crosshairsize 1"
@@ -102,15 +85,17 @@ bind c "cl_crosshairsize 1000; slot10"
 // bind 6 "toggle cl_righthand 1 0"
 // bind 7 "cl_crosshairsize 1"
 // bind 8 "cl_crosshairsize 1000"
-bind F4 toggleconsole
 bind f +lookatweapon
 bind shift +sprint
 bind ctrl +duck
 
-//set resolution 0 means full window mode
-//sept4 switched to 1440x1080 from 1280x960
+//set, 2023 resolution 0 means full window mode
+//sept4, 2023 switched to 1440x1080 from 1280x960
+//march20 2024, turning gsync off in nvidia control panel
 mat_setvideomode 1440 1080 0
 r_fullscreen_gamma 1.9
+cl_showfps 0
+fps_max 0
 
 // cl_showpos 0
 cl_showloadout 1
@@ -133,41 +118,15 @@ viewmodel_presetpos 3
 // cl_righthand 1
 
 
-
-// net_graph
-// net_graph 1
-// net_graphpos 2
-// net_graphheight 0
-
 // radar
 //bind CAPSLOCK +radarzoom
-bind CAPSLOCK "toggle cl_radar_scale 1.0 0.4"
-//alias +radarzoom "cl_radar_always_centered 0;cl_radar_scale 1.0"
-//alias -radarzoom "cl_radar_always_centered 0;cl_radar_scale 0.40"
-cl_radar_rotate 1
+bind CAPSLOCK "toggle cl_radar_scale 1.0 0.3"
+cl_radar_rotate 0
 cl_radar_icon_scale_min 1.0
 cl_radar_always_centered 0
-//bind SHIFT +radarzoom
-//alias +radarzoom "+speed; r_cleardecals;cl_radar_always_centered 0;cl_radar_scale 1.0"
-//alias -radarzoom "-speed; r_cleardecals;cl_radar_always_centered 0;cl_radar_scale 0.4"
-//bind "TAB" "+showscores; toggle cl_radar_scale 0.9 0.6"
-bind "TAB" "+showscores"
 
-//crosshair: CSGO-6u2Ex-aX4Y5-97HeH-ftHpq-FitOH
-//cl_crosshairstyle "4"
-//cl_crosshair_t "0"
-//cl_crosshairgap_useweaponvalue "0"
-//cl_crosshaircolor "1"
-//cl_crosshairthickness "1"
-//cl_crosshairgap "-2.1"
-//cl_crosshairusealpha "0"
-//cl_crosshairdot "0"
-//cl_crosshair_drawoutline "0"
-//cl_crosshair_sniper_width "1"
-//cl_crosshair_drawoutline "0"
-
-//rain modified croshair: CSGO-qRfSt-rNzav-95Knm-JE64T-aarVQ
-cl_crosshair_drawoutline 0
+//rain modified croshair: CSGO-CjiCq-OFBcs-t7d3G-Rt3Qz-FfbcP
+cl_crosshair_drawoutline 1
 cl_crosshairalpha 255
 cl_crosshaircolor 4
 cl_crosshaircolor_b 165
